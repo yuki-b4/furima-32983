@@ -1,50 +1,67 @@
 # テーブル設計
 
 ## usersテーブル
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| nickname   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| first_name | string | null: false |
-| last_name  | string | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| birthday           |        |                           |
 
 ### Associations
 
 - has_many :items
-- has_one :purchases
+- has_many :purchases
 
 ## itemsテーブル
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| name        | string     | null: false |
-| description | text       | null: false |
-| price       | integer    | null: false |
-| user_id     | references |             |
+| Column          | Type       | Options            |
+| --------------- | ---------- | ------------------ |
+| image           |            |                    |
+| name            | string     | null: false        |
+| description     | text       | null: false        |
+| category        |            |                    |
+| condition       |            |                    |
+| shipping_charge |            |                    |
+| shipping_from   |            |                    |
+| shipping_days   |            |                    |
+| price           | integer    | null: false        |
+| user_id         | references | foreign keys: true |
 
 ### Associations
 
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase
+
 
 ## purchasesテーブル
-| Column        | Type       | Options  |
-| ------------- | ---------- | -------- |
-| card_number   | integer    | NOT NULL |
-| valid_month   | integer    | NOT NULL |
-| valid_year    | integer    | NOT NULL |
-| security_code | integer    | NOT NULL |
-| post          | integer    | NOT NULL |
-| city          | string     | NOT NULL |
-| address       | string     | NOT NULL |
-| building      | string     |          |
-| phone         | integer    | NOT NULL |
-| user_id       | references | NOT NULL |
-| item_id       | references | NOT NULL |
+| Column  | Type       | Options            |
+| ------- | ---------- | ------------------ |
+| product | string     | null: false        |
+| user_id | references | foreign keys: true |
+| item_id | references | foreign keys: true |
 
 ### Associations
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
+
+
+## addressesテーブル
+| Column      | Type       | Options            |
+| ----------- | ---------- | ------------------ |
+| post        | integer    | null: false        |
+| prefecture  |            |                    |
+| city        | string     | null: false        |
+| address     | string     | null: false        |
+| building    | string     |                    |
+| phone       | integer    | null: false        |
+| purchase_id | references | foreign keys: true |
+
+### Associations
+
+- belongs_to :purchase
 
 
