@@ -1,24 +1,50 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| nickname   | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+| first_name | string | null: false |
+| last_name  | string | null: false |
 
-Things you may want to cover:
+### Associations
 
-* Ruby version
+- has_many :items
+- has_one :purchases
 
-* System dependencies
+## itemsテーブル
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| name        | string     | null: false |
+| description | text       | null: false |
+| price       | integer    | null: false |
+| user_id     | references |             |
 
-* Configuration
+### Associations
 
-* Database creation
+- belongs_to :user
+- has_one :purchases
 
-* Database initialization
+## purchasesテーブル
+| Column        | Type       | Options  |
+| ------------- | ---------- | -------- |
+| card_number   | integer    | NOT NULL |
+| valid_month   | integer    | NOT NULL |
+| valid_year    | integer    | NOT NULL |
+| security_code | integer    | NOT NULL |
+| post          | integer    | NOT NULL |
+| city          | string     | NOT NULL |
+| address       | string     | NOT NULL |
+| building      | string     |          |
+| phone         | integer    | NOT NULL |
+| user_id       | references | NOT NULL |
+| item_id       | references | NOT NULL |
 
-* How to run the test suite
+### Associations
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- belongs_to :item
 
-* Deployment instructions
 
-* ...
