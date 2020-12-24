@@ -10,7 +10,7 @@
 | last_name          | string  | null: false               |
 | first_name_kana    | string  | null: false               |
 | last_name_kana     | string  | null: false               |
-| birthday_id        | date    | null: false               |
+| birthday           | date    | null: false               |
 
 
 ### Associations
@@ -53,12 +53,12 @@
 ## addressesテーブル
 | Column        | Type       | Options            |
 | ------------- | ---------- | ------------------ |
-| post          | integer    | null: false        |
+| post          | string     | null: false        |
 | prefecture_id | integer    | null: false        |
 | city          | string     | null: false        |
 | address       | string     | null: false        |
 | building      | string     |                    |
-| phone         | integer    | null: false        |
+| phone         | string     | null: false        |
 | purchase      | references | foreign keys: true |
 
 ### Associations
