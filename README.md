@@ -1,14 +1,17 @@
 # テーブル設計
 
 ## usersテーブル
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false               |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
-| first_name         | string | null: false               |
-| last_name          | string | null: false               |
-| birthday           |        |                           |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| first_name         | string  | null: false               |
+| last_name          | string  | null: false               |
+| first_name_kana    | string  | null: false               |
+| last_name_kana     | string  | null: false               |
+| birthday_id        | integer | null: false               |
+
 
 ### Associations
 
@@ -16,18 +19,17 @@
 - has_many :purchases
 
 ## itemsテーブル
-| Column          | Type       | Options            |
-| --------------- | ---------- | ------------------ |
-| image           |            |                    |
-| name            | string     | null: false        |
-| description     | text       | null: false        |
-| category        |            |                    |
-| condition       |            |                    |
-| shipping_charge |            |                    |
-| shipping_from   |            |                    |
-| shipping_days   |            |                    |
-| price           | integer    | null: false        |
-| user_id         | references | foreign keys: true |
+| Column             | Type       | Options            |
+| ------------------ | ---------- | ------------------ |
+| name               | string     | null: false        |
+| description        | text       | null: false        |
+| category_id        | integer    | null: false        |
+| condition_id       | integer    | null: false        |
+| shipping_charge_id | integer    | null: false        |
+| shipping_from_id   | integer    | null: false        |
+| shipping_day_id    | integer    | null: false        |
+| price              | integer    | null: false        |
+| user               | references | foreign keys: true |
 
 ### Associations
 
@@ -36,11 +38,10 @@
 
 
 ## purchasesテーブル
-| Column  | Type       | Options            |
-| ------- | ---------- | ------------------ |
-| product | string     | null: false        |
-| user_id | references | foreign keys: true |
-| item_id | references | foreign keys: true |
+| Column | Type       | Options            |
+| ------ | ---------- | ------------------ |
+| user   | references | foreign keys: true |
+| item   | references | foreign keys: true |
 
 ### Associations
 
@@ -50,15 +51,15 @@
 
 
 ## addressesテーブル
-| Column      | Type       | Options            |
-| ----------- | ---------- | ------------------ |
-| post        | integer    | null: false        |
-| prefecture  |            |                    |
-| city        | string     | null: false        |
-| address     | string     | null: false        |
-| building    | string     |                    |
-| phone       | integer    | null: false        |
-| purchase_id | references | foreign keys: true |
+| Column        | Type       | Options            |
+| ------------- | ---------- | ------------------ |
+| post          | integer    | null: false        |
+| prefecture_id | integer    | null: false        |
+| city          | string     | null: false        |
+| address       | string     | null: false        |
+| building      | string     |                    |
+| phone         | integer    | null: false        |
+| purchase      | references | foreign keys: true |
 
 ### Associations
 
