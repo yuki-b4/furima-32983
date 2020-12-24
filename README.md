@@ -29,7 +29,7 @@
 | shipping_from_id   | integer    | null: false        |
 | shipping_day_id    | integer    | null: false        |
 | price              | integer    | null: false        |
-| user               | references | foreign keys: true |
+| user               | references | foreign key: true  |
 
 ### Associations
 
@@ -40,8 +40,8 @@
 ## purchasesテーブル
 | Column | Type       | Options            |
 | ------ | ---------- | ------------------ |
-| user   | references | foreign keys: true |
-| item   | references | foreign keys: true |
+| user   | references | foreign key: true  |
+| item   | references | foreign key: true  |
 
 ### Associations
 
@@ -59,7 +59,7 @@
 | address             | string     | null: false        |
 | building            | string     |                    |
 | phone               | string     | null: false        |
-| purchase            | references | foreign keys: true |
+| purchase            | references | foreign key: true  |
 
 ### Associations
 
