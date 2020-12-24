@@ -51,18 +51,16 @@
 
 
 ## addressesテーブル
-| Column        | Type       | Options            |
-| ------------- | ---------- | ------------------ |
-| post          | string     | null: false        |
-| prefecture_id | integer    | null: false        |
-| city          | string     | null: false        |
-| address       | string     | null: false        |
-| building      | string     |                    |
-| phone         | string     | null: false        |
-| purchase      | references | foreign keys: true |
+| Column              | Type       | Options            |
+| --------------------| ---------- | ------------------ |
+| post                | string     | null: false        |
+| shipping_from_id    | integer    | null: false        |
+| city                | string     | null: false        |
+| address             | string     | null: false        |
+| building            | string     |                    |
+| phone               | string     | null: false        |
+| purchase            | references | foreign keys: true |
 
 ### Associations
 
 - belongs_to :purchase
-
-
