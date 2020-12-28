@@ -3,10 +3,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-    
     if user_signed_in?
       @item = Item.new
-    else 
+    else
       redirect_to new_user_session_path
     end
   end
@@ -21,7 +20,9 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-     params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :shipping_charge_id, :shipping_day_id, :shipping_from_id, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :shipping_charge_id,
+                                 :shipping_day_id, :shipping_from_id, :image).merge(user_id: current_user.id)
   end
 end
