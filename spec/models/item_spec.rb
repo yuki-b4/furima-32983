@@ -38,10 +38,22 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include('Category is not a number')
         end
 
+        it 'category_idが1である時、保存されない' do
+          @item.category_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Category must be other than 1')
+        end
+
         it 'condition_idが入力されていない' do
           @item.condition_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include('Condition is not a number')
+        end
+
+        it 'condition_idが1である時、保存されない' do
+          @item.condition_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Condition must be other than 1')
         end
 
         it 'shipping_charge_idが入力されていない' do
@@ -50,16 +62,34 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include('Shipping charge is not a number')
         end
 
-        it 'shipping_from_idが入力されていない' do
-          @item.shipping_from_id = nil
+        it 'shipping_charge_idが1である時、保存されない' do
+          @item.shipping_charge_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include('Shipping from is not a number')
+          expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
         end
 
         it 'shipping_day_idが入力されていない' do
           @item.shipping_day_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping day is not a number')
+        end
+
+        it 'shipping_day_idが1である時、保存されない' do
+          @item.shipping_day_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
+        end
+
+        it 'shipping_from_idが入力されていない' do
+          @item.shipping_from_id = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Shipping from is not a number')
+        end
+
+        it 'shipping_from_idが1である時、保存されない' do
+          @item.shipping_from_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Shipping from must be other than 1')
         end
 
         it 'imageが入力されていない' do
