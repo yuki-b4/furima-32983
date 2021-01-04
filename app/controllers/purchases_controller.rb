@@ -3,4 +3,6 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @purchase = Purchase.new 
   end
+
+  
 end
