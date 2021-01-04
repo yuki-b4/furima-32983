@@ -9,9 +9,12 @@ class PurchasesController < ApplicationController
   end
 
   private
+
   def move_to_index
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user.id 
-      redirect_to :index
+      redirect_to root_path
     end
+  end
+
 end
