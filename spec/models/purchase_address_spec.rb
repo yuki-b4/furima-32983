@@ -34,12 +34,6 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address.errors.full_messages).to include("Phone -(ハイフン)を含まず10桁か11桁で入力してください")
     end
 
-    it "phoneが11文字より多いと購入できない" do
-      @purchase_address.phone = "090123456789012"
-      @purchase_address.valid?
-      expect(@purchase_address.errors.full_messages).to include("Phone -(ハイフン)を含まず10桁か11桁で入力してください")
-    end
-
     it "cityが空だと購入できない" do
       @purchase_address.city = nil
       @purchase_address.valid?
