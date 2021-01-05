@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
   belongs_to :shipping_from
   has_one_attached :image
-  has_many :purchases
+  has_one :purchase
 
   validates :name, :description, :image, presence: true
   validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' }

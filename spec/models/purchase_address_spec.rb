@@ -6,7 +6,7 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address = FactoryBot.build(:purchase_address)
     end
 
-    it "全ての情報が入力されていれば、登録できる" do
+    it "配送先情報とクレジットカード情報が正しく入力されていれば、登録できる" do
       expect(@purchase_address).to be_valid
     end
 
@@ -51,17 +51,15 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Shipping from を選択してください")
     end
+
+    it "tokenが空だと登録できない" do
+      @purchase_address.token = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+    end
   end
 end
 
 
 
 
-
-# Post can't be blank
-# Post -(ハイフン)を含めて入力してください
-# Phone can't be blank
-# Phone -(ハイフン)を含まず10桁か11桁で入力してください
-# City can't be blank
-# Address can't be blank
-# Shipping from must be other than 1
