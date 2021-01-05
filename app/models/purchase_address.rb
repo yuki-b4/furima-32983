@@ -6,9 +6,9 @@ class PurchaseAddress
     validates :post, format: { with: /\A\d{3}-\d{4}\z/, message: '-(ハイフン)を含めて入力してください' }
     validates :phone, format: { with: /\A\d{10,11}\z/, message: '-(ハイフン)を含まず10桁か11桁で入力してください' }
   end
-  validates :city, :address, presence: true
+  validates :city, :address, :token, :user_id, :item_id, presence: true
   validates :shipping_from_id, numericality: { other_than: 1, message: 'を選択してください' }
-  validates :token, presence: true
+  
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)

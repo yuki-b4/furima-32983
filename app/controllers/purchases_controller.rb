@@ -1,11 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create, :move_to_index]
   before_action :move_to_index, only: :index
-  before_action :set_item, only: [:index, :create]
+
 
   def index
-    # item_id = @item.id
-    # puchases = Purchase.all
     if Purchase.exists?(item_id: @item.id) 
       redirect_to root_path
     else
@@ -31,7 +30,6 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user.id
   end
 

@@ -6,5 +6,7 @@ FactoryBot.define do
     phone { '09011111111' }
     shipping_from_id { 4 }
     token { 'tk_00000000003rweqf' }
+    user_id {4}
+    item_id {3}
   end
 end
